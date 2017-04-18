@@ -1,0 +1,51 @@
+
+body{
+  background-color: #999 !important;
+}
+
+header{
+    margin: 0 0 0.5em;
+    text-align: center;;
+    text-transform: uppercase;
+    font-family: 'Fredoka One', cursive;
+    font-size: 28px;
+}
+
+#components {
+  background: #1F5768;
+  border: 1px solid red;
+  border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1em 5em;
+  margin: 0 5%;
+}
+
+.on{
+  background: #43A047;
+  border: 1px solid red;
+  border-radius: 15px;
+  height: 150px;
+  margin: 5px 30px 5px 30px;
+  position: relative;
+  text-align: center;
+  width: 250px;
+}
+
+.off{
+  background: red;
+  border: 1px solid red;
+  border-radius: 15px;
+  height: 150px;
+  margin: 5px 30px 5px 30px;
+  position: relative;
+  text-align: center;
+  width: 250px;
+}
+
+.bodySearch{
+  margin: 10px 0px;
+  /*width: 60%;*/
+  border-style: dotted;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+
+	<title>VueJs</title>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/index.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans|Fredoka+One|Source+Code+Pro" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+	<section id="app">
+		<header>
+			Miau
+		</header>
+
+		<section id="components">
+			<div :class="{ on:on, off:off }"> Thing 1 </div>
+			<div :class="{ on:on, off:off }"> Thing 2 </div>
+			<div :class="{ on:on, off:off }"> Thing 3 </div>
+			<div :class="{ on:on, off:off }"> Thing 4 </div>
+			<div :class="{ on:on, off:off }"> Thing 5 </div>
+			<div :class="{ on:on, off:off }"> Thing 6 </div>
+		</section>
+
+		<div id="searcher" class="bodySearch text-center">
+			<button type="button" class="btn btn-lg btn-primary" @click="listen">Do something awesome! </button>
+		</div>
+	<pre>
+		{{ $data  }}
+	</pre>
+	</section>
+
+
+	<script src="assets/js/vue.js"></script>
+	<script src="assets/js/index.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+
+</body>
+</html>
