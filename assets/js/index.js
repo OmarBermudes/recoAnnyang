@@ -1,42 +1,128 @@
 new Vue({
     el:'#app',
 
-    data:{
-        // active: false,
-        off : true,
-        on : false,
+    mounted:function(){
+        if( annyang ){                
+            commands = {
+                'Sala :action puerta principal': this.puertaPrincipal,
 
+                'Sala :action aire': this.aire,
+
+                'Sala :action luz': this.luz,
+            };
+            annyang.addCommands(commands);
+            annyang.setLanguage('es');
+            annyang.start();
+        }else{
+            alert("Ocurrió un error, intente recargar la página.");
+        }
+    }, 
+
+    data:{
+
+        classDoor:{
+            'red-text': true,
+            'text-darken-3': true,
+            'material-icons': true
+        },
+
+        classLight:{
+            'red-text': true,
+            'text-darken-3': true,
+            'material-icons': true
+        },
+
+        classAC:{
+            'grey-text':true,
+            'text-lighten-1':true,
+            'material-icons':true
+        },
+
+        classModal:{
+            classModal: true,
+            'black-text':true,
+            'material-icons': true,
+            'viewData': true,
+            'modal-trigger': true
+        },
     },
 
     methods:{
-      
-        listen: function(){
-            var that = this;
-            if( annyang ){                
-                commands = {
-                    'Activar todos': this.activar,
-                    'Desactivar todos': this.desactivar,
+        // initListen: 
 
-                };
-                annyang.addCommands(commands);
-                annyang.setLanguage('es');
-                annyang.start();
+        puertaPrincipal: function(action){
+            action = action.toLowerCase();
+
+            if( action == "abrir"){
+                this.classDoor = {
+                    'green-text':true,
+                    'text-darken-1':true,  
+                    'material-icons':true
+                }
+
+                alert("La puerta se abrio.");
+
+            }else if(action == "cerrar"){
+                this.classDoor = {
+                    'red-text': true,
+                    'text-darken-3': true,
+                    'material-icons': true
+                }        
+                alert("La puerta se cerro.");
+
+            }else{
+                alert("no se reconocio el comando");
+            }
+
+        },
+
+        aire: function(action){
+            action = action.toLowerCase();
+
+             if(action == "encender"){
+                this.classAC = {
+                    'blue-text':true,
+                    'text-lighten-1':true,
+                    'material-icons':true
+                }
+                alert("El AC se encendio");
+
+            }else if( action == "apagar"){
+                this.classAC = {
+                    'grey-text':true,
+                    'text-lighten-1':true,
+                    'material-icons':true
+                }          
+                alert("El AC se apago");
+
+            }
+            else{
+                alert("no se reconocio el comando");
+
             }
         },
 
-        activar: function(){
-            this.off = false;
-            this.on = true;
+        luz: function(action){
+            action = action.toLowerCase();
 
-            annyang.abort();
-        },
-
-        desactivar: function(){
-            this.off = true;
-            this.on = false;
-            
-            annyang.abort();
-        },
+            if(action == "encender"){
+                this.classLight = {
+                    'green-text':true,
+                    'text-darken-1':true,  
+                    'material-icons':true
+                }
+                alert("La luz se encendio.");
+            }else if(action == "apagar"){
+                this.classLight = {
+                    'red-text': true,
+                    'text-darken-3': true,
+                    'material-icons': true
+                }
+                alert("La luz se apago");
+            }else{
+                alert("no se reconocio el comando");
+            }
+        }
 
     }
 
