@@ -1,3 +1,31 @@
+var nModal = Vue.component('n-Modal',{
+                template: '<div id="modal1" class="modal"> \
+                            <div class="modal-content">\
+                                <h4>Nombre del componente</h4>\
+                                <table>\
+                                    <thead>\
+                                        <tr>\
+                                            <th>Tipo</th>\
+                                            <th>Cuarto</th>\
+                                            <th colspan="2">Estado</th>\
+                                        </tr>\
+                                    </thead>\
+                                    <tbody>\
+                                        <tr>\
+                                            <td>Puerta</td>\
+                                            <td>Sala</td>\
+                                            <td><i class="material-icons light-green-text text-lighten-3">lock_outline</i></td>\
+                                            <td>Cerrada</td>\
+                                        </tr>\
+                                    </tbody>\
+                                </table>\
+                            </div>\
+                            <div class="modal-footer">\
+                                <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cerrar</a>\
+                            </div>\
+                        </div>',
+            });
+
 new Vue({
     el:'#app',
 
@@ -124,6 +152,11 @@ new Vue({
             }
         }
 
-    }
+    },
+
+    components: {
+        nModal:nModal
+    },
+
 
 });
