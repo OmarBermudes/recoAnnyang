@@ -1,5 +1,5 @@
 var nModal = Vue.component('n-Modal',{
-                template: '<div id="modal1" class="modal"> \
+                template: '<div id="nModal" class="modal nyroModal"> \
                             <div class="modal-content">\
                                 <h4>Nombre del componente</h4>\
                                 <table>\
@@ -12,10 +12,10 @@ var nModal = Vue.component('n-Modal',{
                                     </thead>\
                                     <tbody>\
                                         <tr>\
-                                            <td>Puerta</td>\
-                                            <td>Sala</td>\
-                                            <td><i class="material-icons light-green-text text-lighten-3">lock_outline</i></td>\
-                                            <td>Cerrada</td>\
+                                            <td>{{ modalData.type }}</td>\
+                                            <td>{{ modalData.room }}</td>\
+                                            <td><i class="material-icons light-green-text text-lighten-3"> {{ modalData.icon }} </i></td>\
+                                            <td>{{ modalData.status }}</td>\
                                         </tr>\
                                     </tbody>\
                                 </table>\
@@ -24,6 +24,16 @@ var nModal = Vue.component('n-Modal',{
                                 <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cerrar</a>\
                             </div>\
                         </div>',
+                data : function(){
+                    return{
+                        modalData:{
+                            type:'Puerta',
+                            room:'Cuarto',
+                            icon:'lock_outline',
+                            status:'Abierta',
+                        },
+                    }
+                },
             });
 
 new Vue({
@@ -47,7 +57,6 @@ new Vue({
     }, 
 
     data:{
-
         classDoor:{
             'red-text': true,
             'text-darken-3': true,
