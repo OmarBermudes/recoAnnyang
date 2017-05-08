@@ -13,6 +13,9 @@
     </div>
 
     <div id="app" class="section white z-depth-3">
+    <pre>
+        {{ $data  }}
+    </pre>
         <div class="row">
             <div class="col s11 offset-s1">
                 <h2 class="header">HomeVoice</h2>
@@ -21,14 +24,18 @@
 
         <div class="row">
             <div class="col s10 offset-s1">
-                <ul class="collection with-header">
+                <ul class="collection with-header" id="Sala">
                     <li class="collection-header blue-grey lighten-3 white-text">
-                        <h4>Sala</h4></li>
-                    <li class="collection-item">
+                        <h4>Sala</h4>
+                    </li>
+                    <item-door></item-door>
+                    <item-air></item-air>
+                    <item-ligth></item-ligth>
+<!--                     <li class="collection-item">
                         <div>Puerta principal
                             <div class="secondary-content">
                                 <a href="javascript:void(0);"><i :class="classDoor">lock_outline</i></a>
-                                <a href="#nModal"><i :class="classModal">visibility</i></a>
+                                <a @click="fillModal($event)" href="javascript:void(0);"><i :class="classModal">visibility</i></a>
                             </div>
                         </div>
                     </li>
@@ -48,13 +55,13 @@
                             </div>
                         </div>
                     </li>
-                </ul>
+ -->                </ul>
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col s10 offset-s1">
-                <ul class="collection with-header">
+                <ul class="collection with-header" id="userRoom">
                     <li class="collection-header blue-grey lighten-3 white-text">
                         <h4>Cuarto Usuario X</h4>
                     </li>
@@ -76,7 +83,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
 
     <n-Modal></n-Modal>
     
