@@ -1,10 +1,9 @@
 var itemModal = {  
                 itemModal:{
-                    name: 'as',
-                    room: 'as',
-                    icon: 'as',
-                    class: 'as',
-                    status: 'as'
+                    name: '',
+                    room: '',
+                    icon: '',
+                    status: ''
                 }
             };
 
@@ -33,6 +32,15 @@ var mixMethods = {
                     'text-darken-1':true,  
                     'material-icons':true
                 }
+                this.item = {
+                    name: 'Puerta',
+                    room: 'Sala',
+                    icon: 'lock_outline',
+                    status: 'Abierta',
+                    class: this.classDoor
+
+                }
+                console.log(this.item);
 
                 alert("La puerta se abrio.");
 
@@ -41,6 +49,14 @@ var mixMethods = {
                     'red-text': true,
                     'text-darken-3': true,
                     'material-icons': true
+                }
+                this.item = {
+                    name: 'Puerta',
+                    room: 'Sala',
+                    icon: 'lock_outline',
+                    status: 'Cerrada',
+                    class: this.classDoor
+
                 }        
                 alert("La puerta se cerro.");
 
@@ -53,11 +69,19 @@ var mixMethods = {
         aire: function(action){
             action = action.toLowerCase();
 
-             if(action == "encender"){
+             if(action == " "){
                 this.classAC = {
                     'blue-text':true,
                     'text-lighten-1':true,
                     'material-icons':true
+                }
+                this.item = {
+                    name: 'Aire Acondicionado',
+                    room: 'Sala',
+                    icon: ' invert_colors ',
+                    status: 'Encendido',
+                    class: this.classAC
+
                 }
                 alert("El AC se encendio");
 
@@ -66,6 +90,14 @@ var mixMethods = {
                     'grey-text':true,
                     'text-lighten-1':true,
                     'material-icons':true
+                }
+                this.item = {
+                    name: 'Aire Acondicionado',
+                    room: 'Sala',
+                    icon: ' invert_colors ',
+                    status: 'Apagado',
+                    class: this.classAC
+
                 }          
                 alert("El AC se apago");
 
@@ -85,12 +117,26 @@ var mixMethods = {
                     'text-darken-1':true,  
                     'material-icons':true
                 }
+                this.item = {
+                    name: 'Luz',
+                    room: 'Sala',
+                    icon: '  settings_power ',
+                    status: 'Encendida',
+                    class: this.classLight
+                }
                 alert("La luz se encendio.");
             }else if(action == "apagar"){
                 this.classLight = {
                     'red-text': true,
                     'text-darken-3': true,
                     'material-icons': true
+                }
+                this.item = {
+                    name: 'Luz',
+                    room: 'Sala',
+                    icon: '  settings_power ',
+                    status: 'Apagada',
+                    class: this.classLight
                 }
                 alert("La luz se apago");
             }else{
@@ -118,7 +164,7 @@ var nModal = Vue.component('n-Modal',{
                                         <tr>\
                                             <td>{{ itemModal.name }}</td>\
                                             <td>{{ itemModal.room }}</td>\
-                                            <td><i class="itemModal.class"> {{ itemModal.icon }} </i></td>\
+                                            <td><a href="javascript:void(0);"><i :class="itemModal.class">{{ itemModal.icon }}</i></a></td>\
                                             <td>{{ itemModal.status }}</td>\
                                         </tr>\
                                     </tbody>\
@@ -139,7 +185,7 @@ var itemDoor = Vue.component('item-door',{
     mounted:function(){
         if( annyang ){                
             commands = {
-                'Sala :action puerta principal': this.puertaPrincipal,
+                ':action puerta': this.puertaPrincipal,
             };
             annyang.addCommands(commands);
             annyang.setLanguage('es');
@@ -159,10 +205,10 @@ var itemDoor = Vue.component('item-door',{
                 </li>',
 
     data: function(){
-        return{
+
+        let elements = {
             item:{
                 name: 'Puerta',
-                class: 'classDoor',
                 room: 'Sala',
                 icon: 'lock_outline',
                 status: 'Cerrada'
@@ -175,7 +221,12 @@ var itemDoor = Vue.component('item-door',{
             },
 
             classModal,
-        }
+        };
+
+        elements.item.class = elements.classDoor;
+        return elements;
+
+
     },
 
     mixins:[mixMethods],
@@ -210,11 +261,11 @@ var itemAir = Vue.component('item-air',{
                 </li>',
 
     data: function(){
-        return{
+        let elements = {
             item:{
                 name: 'Aire Acondicionado',
                 room: 'Sala',
-                class: 'classAC',
+                // class: 'classAC',
                 icon: 'invert_colors',
                 status: 'Apagado'
             },
@@ -227,6 +278,9 @@ var itemAir = Vue.component('item-air',{
 
             classModal,
         }
+
+        elements.item.class = elements.classAC;
+        return elements;
     },
 
     mixins:[mixMethods],
@@ -257,7 +311,7 @@ var itemLigth = Vue.component('item-ligth',{
                 </li>',
 
     data: function(){
-        return{
+        let elements = {
             item:{
                 name: 'Luz',
                 room: 'Sala',
@@ -274,6 +328,10 @@ var itemLigth = Vue.component('item-ligth',{
 
             classModal,
         }
+
+        elements.item.class = elements.classLight;
+
+        return elements;
     },
 
     mixins:[mixMethods],
